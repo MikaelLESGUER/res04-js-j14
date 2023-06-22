@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+      <section id="app">
+      
+        <h2>Notes</h2>  
+        <ul> 
+          <template v-for="(grade, index) in grades" :key="index" :class="{ 'done': grade.done }">       
+          <li>
+                {{ grade }}  
+                <span :style="grade.done ? 'text-decoration: line-through' : ''">{{ grade.text }}</span>
+          <button @click="markAsDone(index)" v-if="!grade.done">Terminé</button>
+            </li>
+          </template>
+        </ul>    
+        <form @submit.prevent="addGrade">  
+            <fieldset>            
+                <label for="grade">Saisir la note</label>  
+                <input type="text" name="grade" id="grade" />  
+            </fieldset>        
+            <button type="submit">Ajouter</button>  
+        </form>
+        </section>
+      
+</body>
+<script type="module" src="index.js"></script>
+</html>
